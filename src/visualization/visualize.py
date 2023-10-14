@@ -11,6 +11,8 @@ import random
 warnings.filterwarnings('ignore', category=FutureWarning)
 # Establecer el estilo de Seaborn
 sns.set_style("whitegrid")
+from PIL import Image
+import os
 
 
 class DataVisualization:
@@ -268,4 +270,43 @@ class DataVisualization:
 
         plt.tight_layout()
         plt.show()
-    
+
+    def plot_word_clouds_for_all_categories(self, category_column):
+        masks_dict = {
+            6: '../reports/figures/gota-unica.png',
+            7: '../reports/figures/trueno.png',
+            16: '../reports/figures/paz.png'
+        }
+
+        categories = self.df[category_column].unique()
+        color_map = {
+            categories[0]: ["#1E90FF", "#4169E1", "#4682B4", "#5F9EA0"],
+            categories[1]: ["#FFD700", "#FFA500", "#FFB6C1", "#FF4500"],
+            categories[2]: ["#7CFC00", "#32CD32", "#3CB371", "#228B22"],
+        }
+
+        fig, axes = plt.subplots(1, len(categories), figsize=(15, 5))
+
+        for ax, category in zip(axes, categories):
+            cat_data = self.df[self.df[category_column] == category]
+            word_freq = Counter([word for tokens in cat_data['tokens'] for word in tokens])
+
+            # Define la ruta completa de la imagen de máscara para la categoría actual
+            mask_image_path = masks_dict[category]
+
+            # Función personalizada para elegir colores aleatoriamente de la lista asociada a cada categoría
+            def color_func(word, font_size, position, orientation, random_state=None, **kwargs):
+                return random.choice(color_map[category])
+
+            wordcloud = WordCloud(
+                background_color='white', 
+                mask=np.array(Image.open(mask_image_path)), 
+                color_func=color_func
+            ).generate_from_frequencies(word_freq)
+
+            ax.imshow(wordcloud, interpolation='bilinear')
+            ax.axis('off')
+            ax.set_title(f'Nube de Palabras para la Categoría: {category}')
+
+        plt.tight_layout()
+        plt.show()
