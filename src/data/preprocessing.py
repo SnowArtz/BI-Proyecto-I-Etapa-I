@@ -9,7 +9,12 @@ class DataProcessor:
     `Condition monitoring of hydraulic systems` dataset.
     """
     def __init__(self, raw_data_path):
-        self.df = pd.read_excel(raw_data_path)
+        if raw_data_path.split(".")[-1].strip() == "xlsx":
+            self.df = pd.read_excel(raw_data_path)
+        elif raw_data_path.split(".")[-1].strip() == "csv":
+            self.df = pd.read_csv(raw_data_path)
+        else:
+            raise Exception("File format not supported")
         self.nlp = spacy.load('es_core_news_sm')
         self.multi_char_map = {'Ã\x81': 'Á', 'Ã¡': 'á', 'Ã‰': 'É', 'Ã©': 'é', 'Ã\x8d': 'Í', 'Ã“': 'Ó', 'Ã³': 'ó', 'Ãš': 'Ú', 'Ãº': 'ú', 'Ã‘': 'Ñ','Ã±':'ñ', 'Ã': 'í'}
         self.single_char_map = {'Á': 'A', 'á': 'a', 'É': 'E', 'é': 'e', 'Í': 'I', 'í': 'i', 'Ó': 'O', 'ó': 'o', 'Ú': 'U', 'ú': 'u', 'ü': 'u', 'energetico':'energia'}
