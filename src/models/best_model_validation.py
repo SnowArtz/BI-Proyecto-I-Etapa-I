@@ -56,7 +56,3 @@ MultinomialNaiveBayes_BOW.model_cross_validate()
 print("Multinomial Naive Bayes TFIDF: ")
 MultinomialNaiveBayes_TFIDF = Model(MultinomialNB(alpha=1, class_prior=None, fit_prior=True, force_alpha=True), TFIDF.X_tfidf_train, y_train)
 MultinomialNaiveBayes_TFIDF.model_cross_validate()
-
-print("\n\nSupport Vector Machine TFIDF: ")
-SupportVectorMachine_TFIDF = Model(SVC(random_state=42, C=10, gamma="scale", kernel="rbf"), TFIDF.X_tfidf_train, y_train)
-SupportVectorMachine_TFIDF.model_cross_validate()

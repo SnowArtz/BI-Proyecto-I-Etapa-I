@@ -16,8 +16,8 @@ class DataSplitter():
         y = self.df["sdg"]
         self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(X, y, test_size=test_size, random_state=42, stratify=y)
 
-    def write_data(self):
-        self.X_train.to_csv("data/interim/X_train_raw.csv", index=False)
-        self.X_test.to_csv("data/interim/X_test_raw.csv", index=False)
-        self.y_train.to_csv("data/interim/y_train_raw.csv", index=False)
-        self.y_test.to_csv("data/interim/y_test_raw.csv", index=False)
+    def write_data(self, path="data/interim/"):
+        self.X_train.to_csv(path+"X_train_raw.csv", index=False)
+        self.X_test.to_csv(path+"X_test_raw.csv", index=False)
+        self.y_train.to_csv(path+"y_train_raw.csv", index=False)
+        self.y_test.to_csv(path+"y_test_raw.csv", index=False)

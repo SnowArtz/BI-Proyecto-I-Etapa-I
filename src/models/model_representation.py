@@ -34,7 +34,7 @@ class Model():
         self.write_to_file("F1 por Pliegue: " + str(cv_scores))
 
     def model_grid_search(self, param_grid):
-        grid_search = GridSearchCV(self.model, param_grid, cv=5, scoring=self.scorer, verbose=1, n_jobs=-1)
+        grid_search = GridSearchCV(self.model, param_grid, cv=5, scoring=self.scorer, verbose=0, n_jobs=-1)
         grid_search.fit(self.X_train, self.y_train)
         print("Mejores hiperparámetros: " + str(grid_search.best_params_))
         print("Mejor F1: " + str(grid_search.best_score_))

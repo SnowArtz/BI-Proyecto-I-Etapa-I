@@ -28,6 +28,6 @@ BOWRandomForestPipeline = Pipeline([
     ('classifier', RandomForestClassifier(random_state=42, bootstrap=False, criterion="gini", max_depth=None, max_features="log2", min_samples_leaf=1, min_samples_split=5, n_estimators=200))
 ])
 
-dump(TFIDFLogisticRegressionPipeline, 'src/models/pipelines/TFIDFLogisticRegression/TFIDFLogisticRegression.pkl')
-dump(TFIDFCSupportVectorPipeline, 'src/models/pipelines/TFIDFCSupportVector/TFIDFCSupportVector.pkl')
-dump(BOWRandomForestPipeline, 'src/models/pipelines/BOWRandomForest/BOWRandomForest.pkl')
+dump(TFIDFLogisticRegressionPipeline, 'models/TFIDFLogisticRegression/TFIDFLogisticRegression.pkl')
+dump(TFIDFCSupportVectorPipeline, 'models/TFIDFCSupportVector/TFIDFCSupportVector.pkl')
+dump(BOWRandomForestPipeline, 'models/BOWRandomForest/BOWRandomForest.pkl')
