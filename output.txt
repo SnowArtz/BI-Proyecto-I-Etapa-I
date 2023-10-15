@@ -1,0 +1,27 @@
+Resultados de Validación Cruzada (K=5):
+F1 Promedio: 0.9845791057351894
+F1 por Pliegue: [0.98332003 0.9875     0.98126911 0.98330688 0.98749951]
+Resultados de Validación Cruzada (K=5):
+F1 Promedio: 0.9874850969526217
+F1 por Pliegue: [0.98539006 0.98956317 0.98751261 0.98745965 0.9875    ]
+Resultados de Validación Cruzada (K=5):
+F1 Promedio: 0.98708248048484
+F1 por Pliegue: [0.98124688 0.99374994 0.98124935 0.98958301 0.98958323]
+Resultados de Validación Cruzada (K=5):
+F1 Promedio: 0.9841658959167088
+F1 por Pliegue: [0.97290028 0.99583331 0.9750259  0.98540332 0.99166667]
+Resultados de Validación Cruzada (K=5):
+F1 Promedio: 0.984174822921223
+F1 por Pliegue: [0.98751261 0.9812814  0.97711554 0.98538133 0.98958323]
+Resultados de Validación Cruzada (K=5):
+F1 Promedio: 0.9874836616194711
+F1 por Pliegue: [0.98332003 0.98956317 0.98751261 0.98535583 0.99166667]
+Resultados de Validación Cruzada (K=5):
+F1 Promedio: 0.9845753442156763
+F1 por Pliegue: [0.97495544 0.98541538 0.98542306 0.98541618 0.99166667]
+Resultados de Validación Cruzada (K=5):
+F1 Promedio: 0.9808187252922119
+F1 por Pliegue: [0.97079218 0.98749951 0.97497037 0.98541618 0.98541538]
+Resultados de Validación Cruzada (K=5):
+F1 Promedio: 0.9866460072139329
+F1 por Pliegue: [0.98329944 0.98538973 0.9854351  0.98535583 0.99374994]
