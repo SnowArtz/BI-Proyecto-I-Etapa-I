@@ -36,7 +36,7 @@ app.add_middleware(
 class TextsData(BaseModel):
     texts: List[str]
 
-loaded_pipeline = load('models/BOWRandomForest/BOWRandomForest.pkl')
+loaded_pipeline = load('models/TFIDFRidgeClassifier/TFIDFRidgeClassifier.pkl')
 X_train = pd.read_excel("data/raw/cat_6716.xlsx").Textos_espanol
 y_train = pd.read_excel("data/raw/cat_6716.xlsx").sdg
 loaded_pipeline.fit(X_train, y_train)

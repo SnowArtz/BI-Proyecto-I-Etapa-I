@@ -9,6 +9,8 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.svm import SVC
 
+import matplotlib.pyplot as plt
+from sklearn.linear_model import RidgeClassifier
 
 X_train = pd.read_csv("data/processed/X_train_processed.csv").text
 X_test = pd.read_csv("data/processed/X_test_processed.csv").text
@@ -56,3 +58,12 @@ MultinomialNaiveBayes_BOW.fit_predict(BOW.X_bow_train, y_train, BOW.X_bow_test, 
 print("Multinomial Naive Bayes TFIDF: ")
 MultinomialNaiveBayes_TFIDF = Model(MultinomialNB(alpha=1, class_prior=None, fit_prior=True, force_alpha=True), TFIDF.X_tfidf_train, y_train)
 MultinomialNaiveBayes_TFIDF.fit_predict(TFIDF.X_tfidf_train, y_train, TFIDF.X_tfidf_test, y_test)
+
+
+
+print("Ridge Classifier TFIDF: ")
+RidgeClassifier_TFIDF = Model(RidgeClassifier(random_state=42, alpha= 1, class_weight= 'balanced', fit_intercept= False, positive= True, solver= 'auto', tol=  1e-06), TFIDF.X_tfidf_train, y_train)
+RidgeClassifier_TFIDF.fit_predict(TFIDF.X_tfidf_train, y_train, TFIDF.X_tfidf_test, y_test)
+
+
+

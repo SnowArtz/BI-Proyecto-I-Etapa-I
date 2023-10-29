@@ -7,6 +7,8 @@ from sklearn.metrics import make_scorer, f1_score
 from sklearn.metrics import classification_report
 from sklearn.metrics import confusion_matrix, classification_report, ConfusionMatrixDisplay
 
+import time
+
 class Model():
 
     def __init__(self, model, X_train, y_train, output_file="output.txt"):
@@ -42,6 +44,9 @@ class Model():
         self.write_to_file("Mejor F1: " + str(grid_search.best_score_))
 
     def fit_predict(self, X_train, y_train, X_test, y_test, print_differences=False, plot_confusion_matrix=False):
+        
+        start_time = time.time()
+        
         self.model.fit(X_train, y_train)
         y_pred = self.model.predict(X_test)
         if print_differences:
@@ -55,7 +60,14 @@ class Model():
             disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=display_labels)
             disp.plot(cmap=plt.cm.Blues)
             plt.show()
-        return classification_report(y_test, y_pred, digits=4)
+
+        report = classification_report(y_test, y_pred, digits=4, output_dict=True)
+        
+        
+        end_time = time.time()
+        elapsed_time = end_time - start_time
+        print(report['weighted avg']['f1-score'], elapsed_time)
+        return report['weighted avg']['f1-score'], elapsed_time
     
     def write_to_file(self, content):
         with open(self.output_file, "a") as f:
